@@ -18,8 +18,7 @@
                  [environ "1.0.0"]
                  [org.clojure/clojurescript "1.7.122" :scope "provided"]
                  [secretary "1.2.3"]
-                 [yesql "0.5.1"]
-                 [org.postgresql/postgresql "9.4-1204-jdbc41"]]
+                 [com.novemberain/monger "3.0.0-rc2"]]
 
   :plugins [[lein-environ "1.0.0"]
             [lein-asset-minifier "0.2.2"]]

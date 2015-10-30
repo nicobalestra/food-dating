@@ -42,8 +42,15 @@
   (be/get-user id)
   )
 
+(defn add-user-food! [user-id food]
+  (be/add-user-food user-id food))
+
 (s/defschema User {:login String
                    :password String})
+
+(s/defschema Food {:name String
+                   (s/optional-key :ingredients) [String] })
+
 (defapi api-app 
   (swagger-ui "/api-ui" 
               :swagger-docs "/api-docs")
@@ -70,7 +77,13 @@
       :return User
       :summary "Create a new user and return the newly created user entity"
       :body [user User]
-      (ok (add! user)))))
+      (ok (add! user)))
+    (POST* "/:user-id/food" []
+      :return Food
+      :summary "Add a new food to the specified user"
+      :path-params [user-id :- Long]
+      :body [food Food]
+      (ok (add-user-food! user-id food)))))
 
 (def app
   ;(let [ defaults (assoc-in site-defaults [:security :anti-forgery] false)

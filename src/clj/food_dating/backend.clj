@@ -16,3 +16,8 @@
 		  {:login (:login res) :password (:password res)}
 		  )
 	)
+
+(defn add-user-food [user-id food]
+	(println "In backend/add-user-food with user-id " user-id " and food " food)
+	food
+)
